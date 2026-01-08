@@ -1,9 +1,10 @@
 {
-    "name": "Tests",
+    "name": "ToastSDK.Tests",
     "rootNamespace": "",
     "references": [
         "UnityEngine.TestRunner",
-        "UnityEditor.TestRunner"
+        "UnityEditor.TestRunner",
+        "ToastSDK.Runtime"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],
@@ -12,10 +13,8 @@
     "precompiledReferences": [
         "nunit.framework.dll"
     ],
-    "autoReferenced": false,
-    "defineConstraints": [
-        "UNITY_INCLUDE_TESTS"
-    ],
+    "autoReferenced": true,
+    "defineConstraints": [],
     "versionDefines": [],
     "noEngineReferences": false
 }
