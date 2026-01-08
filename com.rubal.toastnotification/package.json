@@ -1,0 +1,10 @@
+{
+  "name": "com.rubal.toastnotification",
+  "displayName": "Toast Notification SDK",
+  "version": "1.0.0",
+  "unity": "6000.2",
+  "description": "Unity SDK to show Toast/Snackbar on Android and iOS",
+  "author": {
+    "name": "Rubal Nandal"
+  }
+}
