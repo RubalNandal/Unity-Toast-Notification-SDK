@@ -65,6 +65,7 @@ Runtime/
 ├── UI/
 │   └── ToastGameObject.cs      // Clickable GameObject logic
 │
+├── AssemblyInfo.cs              // Grants InternalsVisibleTo for test assembly
 └── ToastSDK.Runtime.asmdef     // Runtime assembly definition
 ```
 
@@ -73,8 +74,9 @@ Tests/
 └── Runtime/
     ├── Core/
     │   └── ToastNotifierTests.cs   // Public API safety tests
+    │   └── ToastServiceTests.cs  // Tests internal service resolution logic
     ├── UI/
-    │   └── ToastGameObjectTests.cs // GameObject click tests
+    │   └── ToastGameObjectTests.cs // Tests GameObject click behavior
     └── ToastSDK.Tests.asmdef       // Test assembly
 ```
 
