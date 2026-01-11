@@ -1,38 +1,43 @@
-#if UNITY_ANDROID
 using UnityEngine;
-using ToastSDK.Core;
 
 namespace ToastSDK.Platform.Android
 {
+    // Shows a native Android Toast message
     internal class AndroidToastService : IToastService
     {
         public void Show(string message)
         {
-            using AndroidJavaClass unityPlayer =
-                new AndroidJavaClass("com.unity3d.player.UnityPlayer");
+            using (var unityPlayer =
+                   new AndroidJavaClass("com.unity3d.player.UnityPlayer"))
+            {
+                var activity =
+                    unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
 
-            using AndroidJavaObject activity =
-                unityPlayer.GetStatic<AndroidJavaObject>("currentActivity");
-
-            using AndroidJavaClass toastClass =
-                new AndroidJavaClass("android.widget.Toast");
-
-            activity.Call(
-                "runOnUiThread",
-                new AndroidJavaRunnable(() =>
+                if (activity == null)
                 {
-                    using AndroidJavaObject toast =
-                        toastClass.CallStatic<AndroidJavaObject>(
-                            "makeText",
-                            activity,
-                            message,
-                            toastClass.GetStatic<int>("LENGTH_SHORT")
-                        );
+                    Debug.LogError("AndroidToastService: currentActivity is null");
+                    return;
+                }
 
-                    toast.Call("show");
-                })
-            );
+                activity.Call(
+                    "runOnUiThread",
+                    new AndroidJavaRunnable(() =>
+                    {
+                        using (var toastClass =
+                               new AndroidJavaClass("android.widget.Toast"))
+                        {
+                            var toast = toastClass.CallStatic<AndroidJavaObject>(
+                                "makeText",
+                                activity,
+                                message,
+                                toastClass.GetStatic<int>("LENGTH_SHORT")
+                            );
+
+                            toast.Call("show");
+                        }
+                    })
+                );
+            }
         }
     }
 }
-#endif
