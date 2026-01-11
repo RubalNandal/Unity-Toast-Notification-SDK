@@ -1,6 +1,7 @@
 using UnityEngine;
+using ToastSDK.Core;
 
-namespace ToastSDK.Core
+namespace ToastSDK.Platform.Editor
 {
     internal class EditorToastService : IToastService
     {

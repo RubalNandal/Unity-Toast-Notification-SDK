@@ -1,3 +1,5 @@
+using ToastSDK.Platform;
+
 namespace ToastSDK.Core
 {
     internal static class ToastService
@@ -20,11 +22,11 @@ namespace ToastSDK.Core
         private static IToastService CreateService()
         {
 #if UNITY_ANDROID && !UNITY_EDITOR
-            return new Platform.Android.AndroidToastService();
+            return new ToastSDK.Platform.Android.AndroidToastService();
 #elif UNITY_IOS && !UNITY_EDITOR
-            return new Platform.iOS.UnityToastService();
+            return new ToastSDK.Platform.Fallback.UnityToastService();
 #else
-            return new EditorToastService();
+            return new ToastSDK.Platform.Editor.EditorToastService();
 #endif
         }
     }

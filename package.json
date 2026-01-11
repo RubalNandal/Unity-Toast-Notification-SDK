@@ -1,7 +1,7 @@
 {
   "name": "com.rubal.toastnotification",
   "displayName": "Toast Notification SDK",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "unity": "6000.2",
   "description": "Unity SDK to show Toast/Snackbar on Android and iOS.\n\nQuick Start:\n- GameObject: Import sample and drag ToastObject.prefab into scene.\n- API: ToastNotifier.Show(\"Your message\");\n\nSupports native Android toasts and graceful fallbacks.",
   "author": {
